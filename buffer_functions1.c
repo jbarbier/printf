@@ -3,14 +3,20 @@
  * maybe move it to header file
  * The buffer is created, malloc'ed elsewhere
  */
+#include <unistd.h>
+#include <stdio.h>
+#define BUF_LENGTH 13
+char *flush(char *buffer);
+char *fill_buffer(char *buffer, char *s, int count_c, int s_length);
+void print_buffer(char *buffer, int length);
 
 
 /**
- * flush - fill the buffer with \0
+ * _flush - fill the buffer with \0
  * The length of the buffer is defned in a macro
  * Return: pointer to buffer
  */
-char *flush(char *buffer)
+char *_flush(char *buffer)
 {
 	int i;
 
@@ -23,9 +29,9 @@ return (buffer);
 
 
 /**
- * fill_buffer - fills the buffer with string s
+ * _fill_buffer - fills the buffer with string s
  * @s: a string to fill buffer with
- * @count_c: number of chars needed to be printed until s
+ * @count_c: number of chars put in buffer before s
  * IMPORTANT: update count_c in printf only after filling the buffer, I need to
  * know here at which index I can start to append to the buffer
  * @s_length: length of string, not required, but if I have it rigth away
@@ -38,32 +44,49 @@ char *fill_buffer(char *buffer, char *s, int count_c, int s_length)
 	int i, buffer_index;
 
 	i = 0;
-	buffer_index = count_c;
+	buffer_index = (count_c > BUF_LENGTH) ? count_c % BUF_LENGTH : count_c;
+	//printf("BUFFER index at entry %d\n", buffer_index);
 	while (i < s_length)
 	{
-		if (buffer_index == (BUF_LENGTH - 2))
+		if (buffer_index == BUF_LENGTH)
 		{
-			buffer[BUF_LENGTH - 1] = '\0';
+			//printf("FLUSH FILLED BUFFER\n");
 			print_buffer(buffer, BUF_LENGTH);
-			buffer = flush(buffer);
+			buffer = _flush(buffer);
 			buffer_index = 0;
 		}
-
 		buffer[buffer_index] = s[i];
+		//printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]);
 		++i;
 		++buffer_index;
 	}
-
-	if (i == s_length)
+/*all my string is in the buffer*/
+	//printf("DONE WITH STRING\n");
+	if (buffer_index == BUF_LENGTH)
 	{
-		if (buffer_index < BUF_LENGTH - 2)
-			return (buffer);
-/*in this case I have added all my string and reached BUF_LENGTH - 1*/
-		buffer[BUF_LENGTH - 1] = '\0';
+		//printf("FLUSH AGAIN\n");
 		print_buffer(buffer, BUF_LENGTH);
-		buffer = flush(buffer);
-		return (buffer);
+		buffer = _flush(buffer);
 	}
+	return (buffer);
+}
 
 /**
  * print_buffer - prints the buffer
+ * @buffer: a buffer, char array
+ * @length: number of characters I need to print
+ *
+ * Return: void
+ */
+void print_buffer(char *buffer, int length)
+{
+	//printf("PRINT Length entry: %d\n", length);
+/*if I call the function with count_c,
+ *the number of characters already bufferized*/
+	if (length > BUF_LENGTH)
+		length = length % BUF_LENGTH;
+	//printf("PRINT Length after if: %d\n", length);
+	write(1, buffer, length);
+}
+
+/*do not forget to add a new line in printf*/
