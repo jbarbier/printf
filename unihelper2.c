@@ -10,7 +10,7 @@
 
 int give_precision(char *s, char formatter)
 {
-	int p, i, l;
+	int p, i;
 
 	p = 0;
 	for (i = 0; s[i] != formatter; i++)

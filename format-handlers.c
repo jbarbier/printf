@@ -19,10 +19,10 @@ char *grab_format(const char *format)
 		exit(98);
 	}
 	conv = malloc((j + 2) * sizeof(char));
-//	printf("GRAB DEBUG see format %s\n", format);
+/**	printf("GRAB DEBUG see format %s\n", format); */
 	conv = _strncpy(conv, format, j + 1);
 	conv[j + 1] = '\0';
-//	printf("GRAB DEBUG see conv %s\n", conv);
+/**	printf("GRAB DEBUG see conv %s\n", conv); */
 	return (conv);
 }
 
@@ -55,7 +55,7 @@ void fill_format(const char *format)
 		if (flag == 1)
 		{
 			flag = 0;
-//			printf("FILL - format %s\n", format + i);
+/**			printf("FILL - format %s\n", format + i); */
 			conv = grab_format(format + i);
 			l_conv = _strlen(conv);
 			get_validity_func(conv[l_conv - 1])(conv);
