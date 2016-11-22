@@ -12,8 +12,8 @@ int (*get_validity_func(char c))(char *)
 {
 	valid v[] = {
 		{'c', conversion_char},
-		{'s', conversion_string},
-		{'d', conversion_di}
+		{'s', conversion_string}
+//		{'d', conversion_di}
 	};
 	int i;
 
