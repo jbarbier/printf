@@ -2,19 +2,8 @@
  *it is assumed all functions are called with a valid char * */
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 /*I am including here helper functions that should be moved elsewhere*/
-
-/**
- * _isdigit - checks if char is a digit
- * @c: a char
- * Return: 1 if it is, 0 otherwise
- */
-int _isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
 /*for chars*/
 /**
@@ -29,7 +18,7 @@ int conversion_char(char *s)
 	i = (*s == '%') ? 1 : 0;
 	while (*(s + i) != 'c')
 	{
-		if (_isdigit(*(s + i)) == 0)
+		if (_is_digit(*(s + i)) == 0)
 		{
 			write(1, "no char\n", 8);
 			exit(98);
@@ -55,14 +44,14 @@ int conversion_string(char *s)
 
 	while (*(s + i) != 's')
 	{
-		if ((_isdigit(*(s + i)) == 0 && *(s + i) != '.') ||
+		if ((_is_digit(*(s + i)) == 0 && *(s + i) != '.') ||
 		    (*(s + i) == '.' && dot_flag))
 		{
 			write(1, "no string\n", 10);
 			exit(98);
 			return (0);
 		}
-		if (_isdigit(*(s + i)) == 0 && *(s + i) == '.')
+		if (_is_digit(*(s + i)) == 0 && *(s + i) == '.')
 			dot_flag = 1;
 		++i;
 	}
