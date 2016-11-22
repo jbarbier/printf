@@ -4,14 +4,20 @@
 /*macro*/
 #define BUF_LENGTH 1024
 
+int _printf(const char *format, ...);
 
 int no_conversion(char);
-char **split_format(char *format);
+//char **split_format(char *format);
 
 /*in buffer_functions1.c*/
 char *_flush(char *buffer);
 char *fill_buffer(char *buffer, char *s, int count_c, int s_length);
 void print_buffer(char *buffer, int length);
+
+
+/*in formatting_formatters.c*/
+void fill_format(const char *format);
+char *grab_format(const char *s);
 
 /*in conversion_checks1.c*/
 int conversion_char(char *s);
@@ -26,13 +32,12 @@ int conversion_di(char *s);
 /*in unihelper.c*/
 int _is_digit(char c);
 char *_strncpy(char *dest, const char *src, int n);
+int _strlen(char *);
 
 /*in get_mstring_func.c */
-
 char *(*get_mstring_func(char))(char *, va_list vl);
 
 /* make_string1.c */
-
 char *make_char(char *s, va_list vl);
 char *make_string(char *s, va_list vl);
 
