@@ -25,11 +25,9 @@ int _printf(const char *format, ...)
 	fill_format(format);
 	/** */
 	buffer = malloc(BUF_LENGTH * sizeof(char));
+	_flush(buffer);
 	va_start(alist, format);
-	//format2 = malloc(_strlen(format + 1) * sizeof(char));
-	//printf("copy format : with size %i", _strlen(format) + 1);
-	//format2 = _strncpy(format2, format, _strlen(format) + 1);
-	//printf("format 2: %s\n", format2);
+	flag = 0;
 	b_i = 0;
 	/** Loops through format and fills buffer*/
 	for (i = 0; format[i] != '\0';)
@@ -46,22 +44,25 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			flag = 1;
+			//printf("INITIALIZED %% see buffer %s flag %i\n", buffer, flag);
 			if (format[i + 1] == '%')
 			{
 				flag = (flag == 0) ? 1 : 0;
 				fill_buffer(buffer, format, b_i, 1);
 				i += 2;
 				b_i += 1;
+				printf("ADDING %% see buffer %s flag %i\n", buffer, flag);
 			}
 		}
 		if (flag == 1)
 		{
 			flag = 0;
 			conv = grab_format(format + i);
+			printf("DEBUG: conv %s\n", conv);
 			l_conv = _strlen(conv);
 			format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
 			free(conv);
-			//printf("DEB: formatted %s\n", format_str);
+			printf("DEB: formatted %s\n", format_str);
 			fill_buffer(buffer, format_str, b_i,_strlen(format_str));
 			//printf("DEB: buffer %s\n", buffer);
 			b_i = b_i + _strlen(format_str);

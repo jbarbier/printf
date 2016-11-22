@@ -51,6 +51,7 @@ void fill_format(const char *format)
 				k++;
 			}
 			i = i + k;
+//			printf("FILL - format %s\n", format + i);
 			if ((num_p % 2) != 0 || num_p == 1)
 			{
 				conv = grab_format(format + i);

@@ -17,6 +17,7 @@ char *make_string(char *s, va_list vl)
 	int i, j, k, l, l2;
 	char *result, *string;
 
+	k = 0;
 	for (i = 0, l = 0; s[i] != 's'; i++)
 	{
 		if (s[i] == '.')

@@ -40,7 +40,7 @@ char *fill_buffer(char *buffer, const char *s, int count_c, int s_length)
 
 	i = 0;
 	buffer_index = (count_c > BUF_LENGTH) ? count_c % BUF_LENGTH : count_c;
-	//printf("BUFFER index at entry %d s_length is %d\n", buffer_index, s_length);
+//	printf("BUFFER index at entry %d %s s_length is %d\n", buffer_index, s, s_length);
 	while (i < s_length)
 	{
 		if (buffer_index == BUF_LENGTH)
@@ -51,7 +51,7 @@ char *fill_buffer(char *buffer, const char *s, int count_c, int s_length)
 			buffer_index = 0;
 		}
 		buffer[buffer_index] = s[i];
-		//printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]);
+//		printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]);
 		++i;
 		++buffer_index;
 	}
@@ -80,7 +80,7 @@ void print_buffer(char *buffer, int length)
  *the number of characters already bufferized*/
 	if (length > BUF_LENGTH)
 		length = length % BUF_LENGTH;
-	printf("PRINT Length after if: %d\n", length);
+//	printf("PRINT Length after if: %d\n", length);
 	write(1, buffer, length);
 }
 
