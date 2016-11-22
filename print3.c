@@ -32,10 +32,10 @@ int _printf(const char *format, ...)
 	/** Loops through format and fills buffer*/
 	for (i = 0; format[i] != '\0';)
 	{
-		//printf("entering for loop %s\n", format + i);
+//		printf("entering for loop %s\n", format + i);
 		if (format[i] != '%')
 		{
-			//printf("regular char\n");
+//			printf("regular char\n");
 			fill_buffer(buffer, format + i, b_i, 1);
 			i += 1;
 			b_i += 1;
@@ -44,25 +44,25 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			flag = 1;
-			//printf("INITIALIZED %% see buffer %s flag %i\n", buffer, flag);
+//			printf("INITIALIZED %% see buffer %s flag %i\n", buffer, flag);
 			if (format[i + 1] == '%')
 			{
 				flag = (flag == 0) ? 1 : 0;
 				fill_buffer(buffer, format, b_i, 1);
 				i += 2;
 				b_i += 1;
-				printf("ADDING %% see buffer %s flag %i\n", buffer, flag);
+//				printf("ADDING %% see buffer %s flag %i\n", buffer, flag);
 			}
 		}
 		if (flag == 1)
 		{
 			flag = 0;
 			conv = grab_format(format + i);
-			printf("DEBUG: conv %s\n", conv);
+			printf("DEB: conv %s\n", conv);
 			l_conv = _strlen(conv);
 			format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
 			free(conv);
-			printf("DEB: formatted %s\n", format_str);
+//			printf("DEB: formatted %s\n", format_str);
 			fill_buffer(buffer, format_str, b_i,_strlen(format_str));
 			//printf("DEB: buffer %s\n", buffer);
 			b_i = b_i + _strlen(format_str);
@@ -75,6 +75,5 @@ int _printf(const char *format, ...)
 		//printf("DEBUG print for loop i is %d and format is %s\n", i, format + i);
 		print_buffer(buffer, b_i);
 		free(buffer);
-		write(1, "\n", 1);
 		return (b_i);
 }

@@ -13,16 +13,16 @@ char *grab_format(const char *format)
 	j = 0;
 	while (no_conversion(format[j]) && format[j])
 		++j;
-	if (no_conversion(format[j]) && format[j])
+	if (no_conversion(format[j]))
 	{
 		write(1, "invalid\n", 8);
 		exit(98);
 	}
 	conv = malloc((j + 2) * sizeof(char));
-	//printf("DEBUG see format %s\n", format);
+//	printf("GRAB DEBUG see format %s\n", format);
 	conv = _strncpy(conv, format, j + 1);
 	conv[j + 1] = '\0';
-	//printf("DEBUG see conv %s\n", conv);
+//	printf("GRAB DEBUG see conv %s\n", conv);
 	return (conv);
 }
 
@@ -37,29 +37,30 @@ char *grab_format(const char *format)
 
 void fill_format(const char *format)
 {
-	int i, k, num_p, l_conv;
+	int i, l_conv, flag;
 	char *conv;
 
+	flag = 0;
 	for (i = 0; format[i] != '\0'; ++i)
 	{
 		if (format[i] == '%')
 		{
-			num_p = k = 0;
-			while (format[i + k] == '%')
+			flag = 1;
+			if (format[i + 1] == '%')
 			{
-				num_p++;
-				k++;
+				flag = 0;
+				i += 1;
 			}
-			i = i + k;
+		}
+		if (flag == 1)
+		{
+			flag = 0;
 //			printf("FILL - format %s\n", format + i);
-			if ((num_p % 2) != 0 || num_p == 1)
-			{
-				conv = grab_format(format + i);
-				l_conv = _strlen(conv);
-				get_validity_func(conv[l_conv - 1])(conv);
-				free(conv);
-				i += l_conv;
-			}
+			conv = grab_format(format + i);
+			l_conv = _strlen(conv);
+			get_validity_func(conv[l_conv - 1])(conv);
+			free(conv);
+			i += l_conv - 1;
 
 		}
 	}

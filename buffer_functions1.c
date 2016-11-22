@@ -45,7 +45,7 @@ char *fill_buffer(char *buffer, const char *s, int count_c, int s_length)
 	{
 		if (buffer_index == BUF_LENGTH)
 		{
-			//printf("FLUSH FILLED BUFFER\n");
+//			printf("FLUSH FILLED BUFFER\n");
 			print_buffer(buffer, BUF_LENGTH);
 			buffer = _flush(buffer);
 			buffer_index = 0;
@@ -59,7 +59,7 @@ char *fill_buffer(char *buffer, const char *s, int count_c, int s_length)
 	//printf("DONE WITH STRING\n");
 	if (buffer_index == BUF_LENGTH)
 	{
-		//printf("FLUSH AGAIN\n");
+//		printf("FLUSH AGAIN\n");
 		print_buffer(buffer, BUF_LENGTH);
 		buffer = _flush(buffer);
 	}
