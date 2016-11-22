@@ -69,21 +69,23 @@ char *get_result(char * result, char *string, int p,
 	int j, k, i;
 
 	j = k = i = 0;
+	/* handles those with both precision and width*/
 	if (p > 0 && w > 0)
 	{
 		for (j = 0; j < (slen - p); j++)
-			result[j] = '.';
+			result[j] = ' ';
 		for (k = 0; k < p; k++, j++)
 			result[j] = string[k];
 		result[j] = '\0';
 	}
+	/* Regular simple string case %s*/
 	else if (p == 0 && w == 0 && flen == 2)
 	{
 		for (j = 0; string[j] != '\0'; j++)
 			result[j] = string[j];
-		printf("HELLO\n");
 		result[j] = '\0';
 	}
+	/* case for when there is . or .0 */
 	else if (p == -1)
 	{
 		result[j] = '\0';
@@ -91,7 +93,7 @@ char *get_result(char * result, char *string, int p,
 	else
 	{
 		for (j = 0; j < (w - slen); j++)
-			result[j] = '.';
+			result[j] = ' ';
 		for (k = k + j, i = 0; k < mlen && string[i] != '\0'; k++, i++)
 			result[k] = string[i];
 		result[k] = '\0';
