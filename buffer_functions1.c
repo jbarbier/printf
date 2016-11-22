@@ -5,7 +5,7 @@
  */
 #include <unistd.h>
 #include "holberton.h"
-
+#include <stdio.h>
 /**
  * _flush - fill the buffer with \0
  * The length of the buffer is defned in a macro
@@ -40,7 +40,7 @@ char *fill_buffer(char *buffer, char *s, int count_c, int s_length)
 
 	i = 0;
 	buffer_index = (count_c > BUF_LENGTH) ? count_c % BUF_LENGTH : count_c;
-	//printf("BUFFER index at entry %d\n", buffer_index);
+	printf("BUFFER index at entry %d s_length is %d\n", buffer_index, s_length);
 	while (i < s_length)
 	{
 		if (buffer_index == BUF_LENGTH)
@@ -51,12 +51,12 @@ char *fill_buffer(char *buffer, char *s, int count_c, int s_length)
 			buffer_index = 0;
 		}
 		buffer[buffer_index] = s[i];
-		//printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]);
+		printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]);
 		++i;
 		++buffer_index;
 	}
 /*all my string is in the buffer*/
-	//printf("DONE WITH STRING\n");
+	printf("DONE WITH STRING\n");
 	if (buffer_index == BUF_LENGTH)
 	{
 		//printf("FLUSH AGAIN\n");
@@ -75,12 +75,12 @@ char *fill_buffer(char *buffer, char *s, int count_c, int s_length)
  */
 void print_buffer(char *buffer, int length)
 {
-	//printf("PRINT Length entry: %d\n", length);
+	printf("PRINT Length entry: %d\n", length);
 /*if I call the function with count_c,
  *the number of characters already bufferized*/
 	if (length > BUF_LENGTH)
 		length = length % BUF_LENGTH;
-	//printf("PRINT Length after if: %d\n", length);
+	printf("PRINT Length after if: %d\n", length);
 	write(1, buffer, length);
 }
 

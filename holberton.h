@@ -1,6 +1,6 @@
 #ifndef HEADER
 #define HEADER
-
+#include <stdarg.h>
 /*macro*/
 #define BUF_LENGTH 1024
 
@@ -24,9 +24,17 @@ int (*get_validity_func(char c))(char *s);
 int conversion_di(char *s);
 
 /*in unihelper.c*/
-int _isdigit(char c);
-char *_strncpy(char *dest, char *src, int n);
+int _is_digit(char c);
+char *_strncpy(char *dest, const char *src, int n);
 
+/*in get_mstring_func.c */
+
+char *(*get_mstring_func(char))(char *, va_list vl);
+
+/* make_string1.c */
+
+char *make_char(char *s, va_list vl);
+char *make_string(char *s, va_list vl);
 
 /*structs*/
 /**
@@ -48,7 +56,7 @@ typedef struct valid
 typedef struct m_string
 {
 	char type;
-	char *(*make_s)(char *);
+	char *(*make_s)(char *, va_list);
 } m_string;
 
 

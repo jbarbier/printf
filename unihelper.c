@@ -4,11 +4,11 @@
 
 
 /**
- * _isdigit - checks if char is a digit
+ * _is_digit - checks if char is a digit
  * @c: a char
  * Return: 1 if it is, 0 otherwise
  */
-int _isdigit(char c)
+int _is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
@@ -23,7 +23,7 @@ int _isdigit(char c)
  *
  * Return: pointer to dest
  */
-char *_strncpy(char *dest, char *src, int n)
+char *_strncpy(char *dest, const char *src, int n)
 {
 	int i;
 
