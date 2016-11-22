@@ -12,12 +12,13 @@ int (*get_validity_func(char c))(char *)
 {
 	valid v[] = {
 		{'c', conversion_char},
-		{'s', conversion_string}
+		{'s', conversion_string},
+		{'d', conversion_di}
 	};
 	int i;
 
 	i = 0;
-	while (i < 2)
+	while (i < 3)
 	{
 		if (c == v[i].type)
 			return (v[i].conversion_check);
