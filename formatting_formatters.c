@@ -71,16 +71,7 @@ void *fill_format(const char *format)
 				conv = malloc((j + 1) * sizeof(char));
 				conv = strncpy(conv, format + i, j + 1);
 				conv[j + 1]= '\0';
-				if (get_validity_func(conv[j])(conv) == 0)
-				{
-					write(1, "error\n", 6);
-					free(conv);
-					exit(89);
-				}
-				else
-				{
-					write(1, "yes\n", 4);
-				}
+				get_validity_func(conv[j])(conv);
 				free(conv);
 			}
 
