@@ -12,8 +12,8 @@
 
 int _printf(const char *format, ...)
 {
-	int i, b_i, num_p, k, l_conv;
-	char *buffer, *conv, *format_str;
+	int i, j, b_i, num_p, k, l_conv;
+	char *buffer, *conv, *format_str, *percent;
 	va_list alist;
 
 	if (!format || !*format)
@@ -31,12 +31,14 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0';)
 	{
 		printf("entering for loop %s\n", format + i);
-		while (format[i] != '%' && format[i])
+		j = 0;
+		while (format[i + j] != '%' && format[i + j])
+			++j;
+		if (j > 0)
 		{
-			printf("DEB: in regular loop\n");
-			buffer[b_i] = format[i];
-			b_i++;
-			i++;
+			fill_buffer(buffer, format + i, b_i, j);
+			i += j;
+			b_i += j;
 		}
 		/** % exists */
 		if (!format[i])
@@ -48,6 +50,14 @@ int _printf(const char *format, ...)
 			k++;
 		}
 		i = i + k;
+		if (num_p >= 2)
+		{
+			percent = malloc((num_p / 2) * sizeof(char));
+			for (j = 0; j < num_p / 2; ++j)
+				percent[j] = '%';
+			fill_buffer(buffer, percent, b_i, num_p / 2);
+			b_i += num_p / 2;
+		}
 		if ((num_p % 2) != 0 || num_p == 1)
 		{
 			conv = grab_format(format + i);
