@@ -14,7 +14,7 @@
 
 char *make_string(char *s, va_list vl)
 {
-	int i, j, k, l, l2;
+	int i, j, k, l, l2, c_l, j2;
 	char *result, *string;
 
 	k = 0;
@@ -31,16 +31,29 @@ char *make_string(char *s, va_list vl)
 			break;
 		}
 	}
+	c_l = l;
 	string = va_arg(vl, char *);
-	for (i = 0; (s[i] != '.' || s[i] != 's') && _is_digit(s[i]); i++)
-		l2 = 10 * l2 + s[i] - '0';
-	l = (l == 0) ? _strlen(string) + l2 : l;
-	result = malloc(sizeof(char) * (l + 1));
-	for (j = 0; j < (l2 - 1); ++j)
-		result[j] = ' ';
-	for (k = k + j, i = 0; k < l && string[i] != '\0'; k++, i++)
+	i = 1;
+	while ((s[i] != '.' || s[i] != 's') && _is_digit(s[i]))
 	{
-		result[k] = string[i];
+		l2 = 10 * l2 + s[i] - '0';
+		i++;
+	}
+	l = (l == 0) ? _strlen(string) + l2 : l + l2;
+	result = malloc(sizeof(char) * (l + 1));
+	if (c_l != 0 && l2 != 0)
+	{
+		for (j = 0; j < l2 - 1; j++)
+			result[j] = ' ';
+		for (j2 = 0; j2 < c_l; j2++)
+			result[j] = string[j2];
+	}
+	else
+	{
+		for (j = 0; j < (l2 - _strlen(string)); ++j)
+			result[j] = ' ';
+		for (k = k + j, i = 0; k < l && string[i] != '\0'; k++, i++)
+			result[k] = string[i];
 	}
 	return (result);
 }
