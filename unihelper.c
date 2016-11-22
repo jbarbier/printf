@@ -46,7 +46,7 @@ char *_strncpy(char *dest, const char *src, int n)
 	int i;
 
 	i = 0;
-	printf("Inside copy, i = %i, src = %s\n", n, src);
+//	printf("Inside copy, i = %i, src = %s\n", n, src);
 	while (i < n && *(src + i) != '\0')
 	{
 		*(dest + i) = *(src + i);
@@ -54,7 +54,7 @@ char *_strncpy(char *dest, const char *src, int n)
 	}
 	while (i < n) /*happens only if I am pasting a src shorter than n string*/
 	{
-		printf("here ?, i = %i\n", i);
+		printf("UNI here ?, i = %i\n", i);
 		*(dest + i++) = '\0';
 	}
 	return (dest);
@@ -69,9 +69,10 @@ char *_strncpy(char *dest, const char *src, int n)
 int _strlen(const char *s)
 {
 	int i;
+//	printf("STRLEN here");
 	for (i = 0; *(s + i); ++i)
+//		printf("STRLEN %i\n", i);
 		;
-
 	return (i);
 }
 

@@ -12,8 +12,8 @@ char *(*get_mstring_func(char c))(char *, va_list)
 {
 	m_string v[] = {
 		{'c', make_char},
-		{'s', make_string},
-		{'d', make_decimal}
+		{'s', make_string}
+//		{'d', make_decimal}
 	};
 	int i;
 
