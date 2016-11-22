@@ -54,7 +54,7 @@ char *_strncpy(char *dest, const char *src, int n)
 	}
 	while (i < n) /*happens only if I am pasting a src shorter than n string*/
 	{
-		printf("here ?");
+		printf("here ?, i = %i\n", i);
 		*(dest + i++) = '\0';
 	}
 	return (dest);
@@ -66,7 +66,7 @@ char *_strncpy(char *dest, const char *src, int n)
  *
  * Return: length of string excluding \0
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int i;
 	for (i = 0; *(s + i); ++i)

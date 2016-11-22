@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "holberton.h"
 #include <stdio.h>
-
+#include <unistd.h>
 
 char *grab_format(const char *format)
 {
@@ -19,10 +19,10 @@ char *grab_format(const char *format)
 		exit(98);
 	}
 	conv = malloc((j + 2) * sizeof(char));
-	printf("DEBUG see format %s\n", format);
+	//printf("DEBUG see format %s\n", format);
 	conv = _strncpy(conv, format, j + 1);
 	conv[j + 1] = '\0';
-	printf("DEBUG see conv %s\n", conv);
+	//printf("DEBUG see conv %s\n", conv);
 	return (conv);
 }
 

@@ -17,7 +17,7 @@ char *_flush(char *buffer)
 
 	for (i = 0; i < BUF_LENGTH; ++i)
 		buffer[i] = '\0';
-return (buffer);
+	return (buffer);
 }
 
 
@@ -34,13 +34,13 @@ return (buffer);
  * Fills the buffer starting at index count_c with string s of length s_length
  * Return: pointer to buffer
  */
-char *fill_buffer(char *buffer, char *s, int count_c, int s_length)
+char *fill_buffer(char *buffer, const char *s, int count_c, int s_length)
 {
 	int i, buffer_index;
 
 	i = 0;
 	buffer_index = (count_c > BUF_LENGTH) ? count_c % BUF_LENGTH : count_c;
-	printf("BUFFER index at entry %d s_length is %d\n", buffer_index, s_length);
+	//printf("BUFFER index at entry %d s_length is %d\n", buffer_index, s_length);
 	while (i < s_length)
 	{
 		if (buffer_index == BUF_LENGTH)
@@ -51,12 +51,12 @@ char *fill_buffer(char *buffer, char *s, int count_c, int s_length)
 			buffer_index = 0;
 		}
 		buffer[buffer_index] = s[i];
-		printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]);
+		//printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]);
 		++i;
 		++buffer_index;
 	}
 /*all my string is in the buffer*/
-	printf("DONE WITH STRING\n");
+	//printf("DONE WITH STRING\n");
 	if (buffer_index == BUF_LENGTH)
 	{
 		//printf("FLUSH AGAIN\n");
@@ -75,7 +75,7 @@ char *fill_buffer(char *buffer, char *s, int count_c, int s_length)
  */
 void print_buffer(char *buffer, int length)
 {
-	printf("PRINT Length entry: %d\n", length);
+	//printf("PRINT Length entry: %d\n", length);
 /*if I call the function with count_c,
  *the number of characters already bufferized*/
 	if (length > BUF_LENGTH)

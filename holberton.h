@@ -11,7 +11,7 @@ int no_conversion(char);
 
 /*in buffer_functions1.c*/
 char *_flush(char *buffer);
-char *fill_buffer(char *buffer, char *s, int count_c, int s_length);
+char *fill_buffer(char *buffer, const char *s, int count_c, int s_length);
 void print_buffer(char *buffer, int length);
 
 
@@ -32,7 +32,7 @@ int conversion_di(char *s);
 /*in unihelper.c*/
 int _is_digit(char c);
 char *_strncpy(char *dest, const char *src, int n);
-int _strlen(char *);
+int _strlen(const char *);
 
 /*in get_mstring_func.c */
 char *(*get_mstring_func(char))(char *, va_list vl);
