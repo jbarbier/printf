@@ -9,6 +9,7 @@
  * Return: 1 if checks and 0 and exits otherwise
  */
 
+/**
 int conversion_di(char *s)
 {
 	int i, dot_flag;
@@ -36,14 +37,14 @@ int conversion_di(char *s)
 	}
 	return (1);
 }
-
+*/
 /**
  * make_decimal - creates formatted output
  * @s: format string
  * @vl: arguement to format
  * Return: formatted string;
  */
-
+/**
 char *make_decimal(char *s, va_list vl)
 {
 	int i, j, k, l, l2, num;
@@ -53,7 +54,7 @@ char *make_decimal(char *s, va_list vl)
 	printf("IM HERE\n");
 	string = num_string(num);
 	printf("%s\n", string);
-/**	for (i = 0, l = 0; s[i] != 's'; i++)
+	for (i = 0, l = 0; s[i] != 's'; i++)
 	{
 		if (s[i] == '.')
 		{
@@ -72,16 +73,17 @@ char *make_decimal(char *s, va_list vl)
 	for (k = k + j, i = 0; k < l && string[i] != '\0'; k++, i++)
 	{
 		result[k] = string[i];
-		} */
+		}
 	return (result);
-}
+	}
+*/
 
 /**
  * num_string - prints digits
  * @list: digit arguements
  * Return: string of the number
  */
-
+/**
 char * num_string(int n)
 {
 	int i;
@@ -92,7 +94,7 @@ char * num_string(int n)
 	sign = 1;
 	ptr = malloc(sizeof(char) * 24);
 	i = 0;
-	/** if n is positive, change to negative */
+	if n is positive, change to negative
 	if (n > 0)
 	{
 		n *= -1;
@@ -100,14 +102,13 @@ char * num_string(int n)
 	}
 	if  (n != 0)
 	{
-                /** determine how many places is the number*/
 		while ((n / exp) ==  0)
 		{
 			exp = exp / 10;
 		}
 		if (sign == 1)
 			ptr[i++] = '-';
-                /** prints out every char starting from the left */
+prints out every char starting from the left
 		while (exp >= 1)
 		{
 			ptr[i] = (-(n / exp) + '0');
@@ -121,3 +122,4 @@ char * num_string(int n)
 	ptr[i] = '\0';
 	return (ptr);
 }
+*/

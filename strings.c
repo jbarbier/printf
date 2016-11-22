@@ -14,7 +14,7 @@
 
 char *make_string(char *s, va_list vl)
 {
-	int p, w, slen, mlen, flen, i, j, k;
+	int p, w, slen, mlen, flen, j, k;
 	char *result, *string;
 
 	slen = mlen = j = k = 0;
@@ -33,8 +33,6 @@ char *make_string(char *s, va_list vl)
 	else
 		mlen = slen;
 	result = malloc(sizeof(char) * (mlen + 1));
-	printf("mlen is %d\n", mlen);
-	printf("w is %d and p is %d\n", w, p);
 	result = get_result(result, string, p, w, slen, flen, mlen);
 	return (result);
 }
