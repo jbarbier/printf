@@ -1,5 +1,10 @@
 #ifndef HEADER
 #define HEADER
+
+/*macro*/
+#define BUF_LENGTH 1024
+
+
 int no_conversion(char);
 char **split_format(char *format);
 
