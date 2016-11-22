@@ -1,7 +1,7 @@
 #ifndef HEADER
 #define HEADER
 int no_conversion(char);
-char *split_format(char *format);
+char **split_format(char *format);
 
 /*in buffer_functions1.c*/
 char *_flush(char *buffer);
