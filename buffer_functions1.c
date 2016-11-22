@@ -4,12 +4,7 @@
  * The buffer is created, malloc'ed elsewhere
  */
 #include <unistd.h>
-#include <stdio.h>
-#define BUF_LENGTH 13
-char *flush(char *buffer);
-char *fill_buffer(char *buffer, char *s, int count_c, int s_length);
-void print_buffer(char *buffer, int length);
-
+#include "holberton.h"
 
 /**
  * _flush - fill the buffer with \0
