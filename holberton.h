@@ -41,6 +41,10 @@ char *(*get_mstring_func(char))(char *, va_list vl);
 char *make_char(char *s, va_list vl);
 char *make_string(char *s, va_list vl);
 
+/* decimal.c */
+char *num_string(int n);
+char *make_decimal(char *s, va_list vl);
+
 /*structs*/
 /**
  * struct valid - check if formatting is valid

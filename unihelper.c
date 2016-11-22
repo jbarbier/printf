@@ -74,3 +74,21 @@ int _strlen(char *s)
 
 	return (i);
 }
+
+/**
+ * _isflag - checks if the format starts with a flag
+ * @c: a char
+ * Return: 1 if it is, 0 otherwise
+ */
+int _isdflag(char c)
+{
+	char *flags = "-+ 0";
+
+	while (*flags)
+	{
+		if (*flags == c)
+			return (1);
+		++flags;
+	}
+	return (0);
+}

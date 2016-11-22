@@ -58,4 +58,3 @@ void fill_format(const char *format)
 		}
 	}
 }
-
