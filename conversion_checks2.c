@@ -37,17 +37,17 @@ int conversion_di(char *s)
 	dot_flag = 0;
 	while (*(s + i) != 'd' || *(s + i) != 'c')
 	{
-		if _isdflag(*(s + i))
-				   ++i;
+		if (_isdflag(*(s + i)))
+			++i;
 
-		if ((_isdigit(*(s + i)) == 0 && *(s + i) != '.') ||
+		if ((_is_digit(*(s + i)) == 0 && *(s + i) != '.') ||
 		    (*(s + i) == '.' && dot_flag))
 		{
 			write(1, "no digit\n", 9);
 			exit(98);
 			return (0);
 		}
-		if (_isdigit(*(s + i)) == 0 && *(s + i) == '.')
+		if (_is_digit(*(s + i)) == 0 && *(s + i) == '.')
 			dot_flag = 1;
 		++i;
 	}

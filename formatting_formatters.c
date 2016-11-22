@@ -68,7 +68,7 @@ void *fill_format(const char *format)
 				while (no_conversion(format[i + j]) &&
 				       format[i + j])
 					++j;
-				conv = malloc((j + 1) * sizeof(char));
+				conv = malloc((j + 2) * sizeof(char));
 				conv = strncpy(conv, format + i, j + 1);
 				conv[j + 1]= '\0';
 				get_validity_func(conv[j])(conv);
