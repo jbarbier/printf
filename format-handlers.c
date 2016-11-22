@@ -13,6 +13,11 @@ char *grab_format(const char *format)
 	j = 0;
 	while (no_conversion(format[j]) && format[j])
 		++j;
+	if (no_conversion(format[j]) && format[j])
+	{
+		write(1, "invalid\n", 8);
+		exit(98);
+	}
 	conv = malloc((j + 2) * sizeof(char));
 	printf("DEBUG see format %s\n", format);
 	conv = _strncpy(conv, format, j + 1);
