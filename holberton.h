@@ -34,12 +34,18 @@ int _is_digit(char c);
 char *_strncpy(char *dest, const char *src, int n);
 int _strlen(const char *);
 
+/* in unihelper2.c */
+int give_precision(char *, char);
+int give_width(char *, char);
+char *get_result(char * result, char *string, int p, int w, int slen, int flen, int mlen);
+
 /*in get_mstring_func.c */
 char *(*get_mstring_func(char))(char *, va_list vl);
 
 /* make_string1.c */
 char *make_char(char *s, va_list vl);
 char *make_string(char *s, va_list vl);
+
 
 /* decimal.c */
 char *num_string(int n);
