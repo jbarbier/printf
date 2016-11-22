@@ -1,32 +1,19 @@
-/*file containing all the conversion_check functions
- *it is assumed all functions are called with a valid char * */
+/*string formatters*/
+#include <stdarg.h>
+#include "holberton.h"
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
-
-/*for chars*/
 /**
- * conversion_char - check if format is right
- * @s: formatting string for chars
- * Return: 1 if it is 0 otherwise, actually exit process
+ *
  */
-int conversion_char(char *s)
-{
-	int i;
 
-	i = (*s == '%') ? 1 : 0;
-	while (*(s + i) != 'c')
-	{
-		if (_is_digit(*(s + i)) == 0)
-		{
-			write(1, "no char\n", 8);
-			exit(98);
-			return (0);
-		}
-		++i;
-	}
-	return (1);
+char *make_string(char *s, va_list vl)
+{
+	(void) s;
+	(void) vl;
+	return (NULL);
 }
+
 
 /*for strings*/
 /**
