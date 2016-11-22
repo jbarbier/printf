@@ -46,7 +46,7 @@ char *_strncpy(char *dest, const char *src, int n)
 	int i;
 
 	i = 0;
-	printf("Inside copy, i = %i, src = %s\n", n, src);
+//	printf("Inside copy, i = %i, src = %s\n", n, src);
 	while (i < n && *(src + i) != '\0')
 	{
 		*(dest + i) = *(src + i);
