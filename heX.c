@@ -16,11 +16,10 @@ char *heX(unsigned int n)
 
 	i = 0;
 	ns = malloc(sizeof(char) * 100);
-	while (n != 0)
-	{
+	do {
 		ns[i++] = (s[n % 16]);
 		n = n / 16;
-	}
+	} while (n > 0);
 	reverse_array(ns, i);
 	ns[i] = '\0';
 	return (ns);
