@@ -14,12 +14,13 @@ int (*get_validity_func(char c))(char *)
 		{'c', conversion_char},
 		{'s', conversion_string},
 		{'d', conversion_di},
-		{'i', conversion_di}
+		{'i', conversion_di},
+		{'u', conversion_u}
 	};
 	int i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (c == v[i].type)
 			return (v[i].conversion_check);
