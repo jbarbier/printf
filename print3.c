@@ -4,6 +4,22 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+
+/**
+ * error_format - returns error
+ * @format: format
+ * none
+ */
+
+void error_format(const char *format)
+{
+	if (!format || !*format)
+	{
+		write(1, "error", 6);
+		exit(98);
+	}
+}
+
 /**
  * _printf - trying to make printf2
  * @format: format of string
@@ -16,16 +32,10 @@ int _printf(const char *format, ...)
 	char *buffer, *conv, *format_str;
 	va_list alist;
 
-	if (!format || !*format)
-	{
-		write(1, "error", 6);
-		exit(98);
-	}
-	fill_format(format);
+	error_format(format), fill_format(format);
 	buffer = malloc(BUF_LENGTH * sizeof(char));
 	_flush(buffer);
-	va_start(alist, format);
-	flag = b_i = 0;
+	va_start(alist, format), flag = b_i = 0;
 	for (i = 0; format[i] != '\0';)
 	{
 		if (format[i] != '%')
@@ -52,9 +62,7 @@ int _printf(const char *format, ...)
 			free(conv);
 			fill_buffer(buffer, format_str, b_i, _strlen(format_str));
 			b_i = b_i + _strlen(format_str);
-			free(format_str);
-			i += l_conv;
-
+			free(format_str), i += l_conv;
 		}
 	}
 		print_buffer(buffer, b_i);
