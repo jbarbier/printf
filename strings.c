@@ -46,23 +46,24 @@ char *make_string(char *s, va_list vl)
  */
 int conversion_string(char *s)
 {
-	int i, dot_flag;
+	int i;
+	int dot_flag;
 
 	i = (*s == '%') ? 1 : 0;
 	dot_flag = 0;
 
 	while (*(s + i) != 's')
 	{
-/**		if ((_is_digit(*(s + i)) == 0 && *(s + i) != '.') ||
- *		    (*(s + i) == '.' && dot_flag))
- *		{
- *			write(1, "no string\n", 10); */
-/**			exit(98); */
-/**			return (0);*/
-/*		} */
+		if ((_is_digit(*(s + i)) == 0 && *(s + i) != '.') ||
+		    (*(s + i) == '.' && dot_flag))
+		{
+			write(1, "no string\n", 10);
+			exit(98);
+			return (0);
+		}
 		if (_is_digit(*(s + i)) == 0 && *(s + i) == '.')
 			dot_flag = 1;
-		++i;
+			++i;
 	}
 	return (1);
 }
