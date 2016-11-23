@@ -75,14 +75,15 @@ int _strlen(const char *s)
 }
 
 /**
- * _isflag - checks if the format starts with a flag
+ * _isdflag - checks if the format starts with a flag
  * @c: a string, maybe a flag in first place
  * Checks if we have a valid d flag, ie 2 flags can be combined
  * Return: 1 if it is, 0 otherwise
  */
-int _isdflag(char* c)
+int _isdflag(char *c)
 {
 	char *flags = "-+ 0";
+
 	while (*flags)
 	{
 		if (*flags == *c)
