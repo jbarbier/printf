@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == '%' || conv == NULL)
 			{
 				flag = (flag == 0) ? 1 : 0;
-				fill_buffer(buffer, format, b_i, 1);
+				fill_buffer(buffer, format + i, b_i, 1);
 				i += 2, b_i += 1;
 			}
 		}
