@@ -45,8 +45,7 @@ int _printf(const char *format, ...)
 		}
 		if (format[i] == '%')
 		{
-			flag = 1;
-			conv = grab_format(format + i);
+			flag = 1, conv = grab_format(format + i);
 			if (format[i + 1] == '%' || conv == NULL)
 			{
 				flag = (flag == 0) ? 1 : 0;
@@ -59,10 +58,7 @@ int _printf(const char *format, ...)
 			flag = 0;
 			conv = grab_format(format + i);
 			l_conv = _strlen(conv);
-			if (get_validity_func(conv[l_conv - 1])(conv))
-				format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
-			else
-				break;
+			format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
 			free(conv);
 			fill_buffer(buffer, format_str, b_i, _strlen(format_str));
 			b_i = b_i + _strlen(format_str);
