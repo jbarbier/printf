@@ -11,39 +11,6 @@
  */
 int conversion_di(char *s)
 {
-	int i, dot_flag;
-
-	i = (*s == '%') ? 1 : 0;
-	printf("%s\n", s);
-	dot_flag = 0;
-	if (*(s + i) == 'd' || *(s + i) == 'i')
-		return (1);
-	if (*(s + i) == '0' && *(s + i + 1) == '0')
-	{
-		write(1, "no digit\n", 9);
-		exit(98);
-		return (0);
-	}
-	while (*(s + i) != 'd' && *(s + i) != 'i')
-	{
-		printf("LO0KING at %c\n",*(s + i));
-		if (_isdflag(*(s + i)))
-		{
-			;
-		}
-		else if ((!_is_digit(*(s + i)) && *(s + i) != '.') ||
-		    (*(s + i) == '.' && dot_flag))
-		{
-			write(1, "no digit\n", 9);
-			exit(98);
-			return (0);
-		}
-		else if (_is_digit(*(s + i)) == 0 && *(s + i) == '.')
-		{
-			dot_flag = 1;
-		}
-		++i;
-	}
 	return (1);
 }
 
@@ -59,6 +26,43 @@ int _max(int a, int b)
 	return ((a > b) ? a : b);
 }
 
+/**
+ * _itoa - transforms a number into a string
+ * @n: an int
+ * Return: a string
+ */
+char *_itoa(int n)
+{
+	int l, tens, i, min;
+	char *number;
+	l = 1;
+	min = 0;
+	if (n < 0)
+	{
+		++l;
+		min = 1;
+		n = -n;
+	}
+	tens = 10;
+	while ((n / tens) > 0)
+	{
+		tens *= tens;
+		++l;
+	}
+	number = malloc((l + 1) * sizeof(char));
+	i = l - 1;
+	number[l] = '\0';
+	do
+	{
+		number[i] = n % 10 + '0';
+		n /= 10;
+		--i;
+	} while (i >= 0 && n > 0);
+
+	if (i == 0 && min)
+		number[0] = '-';
+	return (number);
+}
 
 /**
  * make_decimal - creates formatted output
@@ -69,48 +73,11 @@ int _max(int a, int b)
 
 char *make_decimal(char *s, va_list vl)
 {
-	int width, precision, ln, l, i;
-	char *number, *result;
-
-	width = getwidth(s);
-	precision = getprecision(s);
+	char *number;
 
 	number = _itoa(va_arg(vl, int));
-	ln = _strlen(number);
 
-	l = max(ln, max(width, precision));
-
-	result = malloc((l + 1) * sizeof(char));
-
-	i = (*s = '%') ? 1 : 0;
-	if (_isdflag(*(s + i)))
-	{
-		switch *(s + i)
-		{
-		case '-':
-
-			break;
-case '
-
-
+	return (number);
 }
 
 
-
-
-
-
-
-
-
-
-
-int main(void)
-{
-
-	conversion_di("%9.0d");
-	conversion_di("%00.9i");
-	conversion_di("%5d");
-
-	return (0);
-}
