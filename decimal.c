@@ -12,6 +12,7 @@
  */
 int conversion_di(char *s)
 {
+	(void) s;
 	return (1);
 }
 
@@ -65,6 +66,7 @@ char *make_decimal(char *s, va_list vl)
 {
 	char *number;
 	int n;
+	(void) s;
 
 	n = va_arg(vl, int);
 
