@@ -15,12 +15,15 @@ char *(*get_mstring_func(char c))(char *, va_list)
 		{'s', make_string},
 		{'d', make_decimal},
 		{'i', make_decimal},
-		{'u', make_unsigned}
+		{'u', make_unsigned},
+		{'o', make_octal},
+		{'b', make_binary}
 	};
 	int i;
 
 	i = 0;
-	while (i < 5)
+
+	while (i < 7)
 	{
 		if (c == v[i].type)
 			return (v[i].make_s);

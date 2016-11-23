@@ -60,5 +60,6 @@ char *make_unsigned(char *s, va_list l)
 	(void) s;
 	n = va_arg(l, unsigned int);
 	result = _utoa(n);
-	return(result);
+	return (result);
+
 }
