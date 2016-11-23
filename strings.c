@@ -14,54 +14,26 @@
 
 char *make_string(char *s, va_list vl)
 {
-	int i, j, k, l, l2, c_l, j2;
+	int p, w, slen, mlen, flen, j, k;
 	char *result, *string;
 
-	k = 0;
-	l = l2 = 0;
-	for (i = 0; s[i] != 's'; i++)
-	{
-		if (s[i] == '.')
-		{
-			i++;
-			while (s[i] != 's')
-			{
-				l  = 10 * l + s[i] - '0';
-				i++;
-			}
-			break;
-		}
-	}
-	c_l = l;
+	slen = mlen = j = k = 0;
 	string = va_arg(vl, char *);
-
-	printf("M STRING va_arg\n");
-	i = 1;
-	while ((s[i] != '.' || s[i] != 's') && _is_digit(s[i]))
-	{
-		l2 = 10 * l2 + s[i] - '0';
-		i++;
-	}
-	printf("M_STRING STRLEN %i\n", _strlen(string) );
-	l = (l == 0) ? _strlen(string) + l2 : l + l2;
-	printf("M_STRING STRLEN\n");
-	result = malloc(sizeof(char) * (l + 1));
-	if (c_l != 0 && l2 != 0)
-	{
-		for (j = 0; j < l2 - 1; j++)
-			result[j] = ' ';
-		for (j2 = 0; j2 < c_l; j2++)
-			result[j] = string[j2];
-		result[j] = '\0';
-	}
+	if (string == NULL)
+		exit(98);
+	p = give_precision(s, 's');
+	w = give_width(s, 's');
+	slen = _strlen(string);
+	flen = _strlen(s);
+	/* determine malloc len */
+	if (w > p && w != 0 && p != -1)
+		mlen = w;
+	else if (p > w && p != 0)
+		mlen = p;
 	else
-	{
-		for (j = 0; j < (l2 - _strlen(string)); ++j)
-			result[j] = ' ';
-		for (k = k + j, i = 0; k < l && string[i] != '\0'; k++, i++)
-			result[k] = string[i];
-		result[k] = '\0';
-	}
+		mlen = slen;
+	result = malloc(sizeof(char) * (mlen + 1));
+	result = get_result(result, string, p, w, slen, flen, mlen);
 	return (result);
 }
 

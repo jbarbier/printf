@@ -14,18 +14,6 @@ int conversion_di(char *s)
 	return (1);
 }
 
-
-/**
- * _max - get the max of 2 numbers
- * @a: int
- * @b: int
- * Return: the largest
- */
-int _max(int a, int b)
-{
-	return ((a > b) ? a : b);
-}
-
 /**
  * _itoa - transforms a number into a string
  * @n: an int
@@ -79,5 +67,3 @@ char *make_decimal(char *s, va_list vl)
 
 	return (number);
 }
-
-

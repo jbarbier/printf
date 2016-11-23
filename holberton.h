@@ -5,9 +5,8 @@
 #define BUF_LENGTH 1024
 
 int _printf(const char *format, ...);
-
+void error_format(const char *format);
 int no_conversion(char);
-//char **split_format(char *format);
 
 /*in buffer_functions1.c*/
 char *_flush(char *buffer);
@@ -35,12 +34,18 @@ char *_strncpy(char *dest, const char *src, int n);
 int _strlen(const char *);
 int _isdflag(char c);
 
+/* in unihelper2.c */
+int give_precision(char *, char);
+int give_width(char *, char);
+char *get_result(char *, char *, int p, int w, int slen, int flen, int mlen);
+
 /*in get_mstring_func.c */
 char *(*get_mstring_func(char))(char *, va_list vl);
 
 /* make_string1.c */
 char *make_char(char *s, va_list vl);
 char *make_string(char *s, va_list vl);
+
 
 /* decimal.c */
 char *num_string(int n);
@@ -49,8 +54,8 @@ char *make_decimal(char *s, va_list vl);
 /*structs*/
 /**
  * struct valid - check if formatting is valid
- * @type
- * @conversion_check - function to check if a conversion string is valid
+ * @type: type
+ * @conversion_check:function to check if a conversion string is valid
  */
 typedef struct valid
 {
@@ -59,9 +64,9 @@ typedef struct valid
 } valid;
 
 /**
- *struct m_string - make strinf from valid format
+ * struct m_string -  valid format
  * @type: type of format
- * @m_string - make the string
+ * @make_s:make the string
  */
 typedef struct m_string
 {
