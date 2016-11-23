@@ -21,10 +21,10 @@ int conversion_o(char *s)
  * @b: the base, 8 or 2
  * Return: a number in octal
  */
-long long octorbi(unsigned int n, int b)
+long octorbi(unsigned int n, int b)
 {
 	long int i;
-	long long result;
+	long result;
 
 	i = 1;
 	result = 0;
@@ -43,9 +43,9 @@ long long octorbi(unsigned int n, int b)
  * @n: an unsigned int
  * Return: a string
  */
-char *_ltoa(long long n)
+char *_ltoa(long n)
 {
-	int l, i, min;
+	int l, i;
 	char *number;
 	long int tens;
 

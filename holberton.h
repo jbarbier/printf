@@ -59,13 +59,23 @@ char *_utoa(unsigned int);
 /*octal.c */
 int conversion_o(char *s);
 char *make_octal(char *s, va_list vl);
-long long octorbi(unsigned int, int);
-char *_ltoa(long long);
+long octorbi(unsigned int, int);
+char *_ltoa(long);
 
 /*binary.c*/
 int conversion_b(char *s);
 char *make_binary(char *s, va_list vl);
 
+
+/* hex. */
+int conversion_h(char *s);
+char *make_hex(char *s, va_list vl);
+char *hex(unsigned int);
+void reverse_array(char *a, int n);
+
+/* heX */
+char *make_heX(char *s, va_list vl);
+char *heX(unsigned int);
 
 /*structs*/
 /**
