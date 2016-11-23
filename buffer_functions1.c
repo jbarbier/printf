@@ -8,6 +8,7 @@
 #include <stdio.h>
 /**
  * _flush - fill the buffer with \0
+ * @buffer: buffer;
  * The length of the buffer is defned in a macro
  * Return: pointer to buffer
  */
@@ -24,7 +25,8 @@ char *_flush(char *buffer)
 
 
 /**
- * _fill_buffer - fills the buffer with string s
+ * fill_buffer - fills the buffer with string s
+ * @buffer: buffer
  * @s: a string to fill buffer with
  * @count_c: number of chars put in buffer before s
  * IMPORTANT: update count_c in printf only after filling the buffer, I need to
@@ -40,26 +42,20 @@ char *fill_buffer(char *buffer, const char *s, int count_c, int s_length)
 
 	i = 0;
 	buffer_index = (count_c > BUF_LENGTH) ? count_c % BUF_LENGTH : count_c;
-/**	printf("BUFFER index at entry %d %s s_length is %d\n", buffer_index, s, s_length); */
 	while (i < s_length)
 	{
 		if (buffer_index == BUF_LENGTH)
 		{
-/**			printf("FLUSH FILLED BUFFER\n"); */
 			print_buffer(buffer, BUF_LENGTH);
 			buffer = _flush(buffer);
 			buffer_index = 0;
 		}
 		buffer[buffer_index] = s[i];
-/**		printf("COPY WORKS: [index: %i]%c %c\n", buffer_index, buffer[buffer_index], s[i]); */
 		++i;
 		++buffer_index;
 	}
-/*all my string is in the buffer*/
-	/**printf("DONE WITH STRING\n"); */
 	if (buffer_index == BUF_LENGTH)
 	{
-/**		printf("FLUSH AGAIN\n"); */
 		print_buffer(buffer, BUF_LENGTH);
 		buffer = _flush(buffer);
 	}
@@ -75,13 +71,8 @@ char *fill_buffer(char *buffer, const char *s, int count_c, int s_length)
  */
 void print_buffer(char *buffer, int length)
 {
-	/**printf("PRINT Length entry: %d\n", length);*/
-/*if I call the function with count_c,
- *the number of characters already bufferized*/
+
 	if (length > BUF_LENGTH)
 		length = length % BUF_LENGTH;
-/**	printf("PRINT Length after if: %d\n", length); */
 	write(1, buffer, length);
 }
-
-/*do not forget to add a new line in printf*/

@@ -3,7 +3,7 @@
 
 /**
  * no_conversion - checks if there is a conversion formatter
- * @char: character to check
+ * @c: character to check
  * Return: 1 if not conversion formmater, 0 if it is
  */
 
@@ -68,13 +68,14 @@ char *_strncpy(char *dest, const char *src, int n)
 int _strlen(const char *s)
 {
 	int i;
+
 	for (i = 0; *(s + i); ++i)
 		;
 	return (i);
 }
 
 /**
- * _isflag - checks if the format starts with a flag
+ * _isdflag - checks if the format starts with a flag
  * @c: a char
  * Return: 1 if it is, 0 otherwise
  */

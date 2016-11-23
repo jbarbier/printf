@@ -21,37 +21,26 @@ int _printf(const char *format, ...)
 		write(1, "error", 6);
 		exit(98);
 	}
-	/** Goes through format and checks validity of formatters*/
 	fill_format(format);
-	/** */
 	buffer = malloc(BUF_LENGTH * sizeof(char));
 	_flush(buffer);
 	va_start(alist, format);
-	flag = 0;
-	b_i = 0;
-	/** Loops through format and fills buffer*/
+	flag = b_i = 0;
 	for (i = 0; format[i] != '\0';)
 	{
-/**		printf("entering for loop %s\n", format + i); */
 		if (format[i] != '%')
 		{
-/**			printf("regular char\n"); */
 			fill_buffer(buffer, format + i, b_i, 1);
-			i += 1;
-			b_i += 1;
+			i += 1, b_i += 1;
 		}
-		/** % exists */
 		if (format[i] == '%')
 		{
 			flag = 1;
-/**			printf("INITIALIZED %% see buffer %s flag %i\n", buffer, flag); */
 			if (format[i + 1] == '%')
 			{
 				flag = (flag == 0) ? 1 : 0;
-				fill_buffer(buffer, format+i, b_i, 1);
-				i += 2;
-				b_i += 1;
-/**				printf("ADDING %% see buffer %s flag %i\n", buffer, flag); */
+				fill_buffer(buffer, format + i, b_i, 1);
+				i += 2, b_i += 1;
 			}
 		}
 		if (flag == 1)
@@ -61,17 +50,13 @@ int _printf(const char *format, ...)
 			l_conv = _strlen(conv);
 			format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
 			free(conv);
-/**			printf("DEB: formatted %s\n", format_str); */
-			fill_buffer(buffer, format_str, b_i,_strlen(format_str));
-/**			//printf("DEB: buffer %s\n", buffer); */
+			fill_buffer(buffer, format_str, b_i, _strlen(format_str));
 			b_i = b_i + _strlen(format_str);
-/**			//printf("DEB: length of buffer = %d\n", b_i); */
 			free(format_str);
 			i += l_conv;
 
 		}
 	}
-	/**printf("DEBUG print for loop i is %d and format is %s\n", i, format + i); */
 		print_buffer(buffer, b_i);
 		free(buffer);
 		return (b_i);

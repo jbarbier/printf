@@ -7,7 +7,6 @@
 int _printf(const char *format, ...);
 
 int no_conversion(char);
-/*char **split_format(char *format); */
 
 /*in buffer_functions1.c*/
 char *_flush(char *buffer);
@@ -37,7 +36,7 @@ int _strlen(const char *);
 /* in unihelper2.c */
 int give_precision(char *, char);
 int give_width(char *, char);
-char *get_result(char * result, char *string, int p, int w, int slen, int flen, int mlen);
+char *get_result(char *, char *, int p, int w, int slen, int flen, int mlen);
 
 /*in get_mstring_func.c */
 char *(*get_mstring_func(char))(char *, va_list vl);
@@ -54,8 +53,8 @@ char *make_decimal(char *s, va_list vl);
 /*structs*/
 /**
  * struct valid - check if formatting is valid
- * @type
- * @conversion_check - function to check if a conversion string is valid
+ * @type: type
+ * @conversion_check:function to check if a conversion string is valid
  */
 typedef struct valid
 {
@@ -64,9 +63,9 @@ typedef struct valid
 } valid;
 
 /**
- *struct m_string - make strinf from valid format
+ * struct m_string -  valid format
  * @type: type of format
- * @m_string - make the string
+ * @make_s:make the string
  */
 typedef struct m_string
 {

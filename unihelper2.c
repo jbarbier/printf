@@ -5,6 +5,7 @@
 /**
  * give_precision - returns the appropriate precision
  * @s: format string;
+ * @formatter: formatter
  * Return: precision number of -1 if it doesnt exist
  */
 
@@ -53,8 +54,9 @@ int give_width(char *s, char formatter)
 }
 
 /**
- * get_result: gives a pointer back to results
- * @result: array
+ * get_result- gives a pointer back to results
+ * @r: array
+ * @s: string
  * @p: precision
  * @w: width
  * @slen: str len
@@ -63,8 +65,7 @@ int give_width(char *s, char formatter)
  * Return: result pointer
  */
 
-char *get_result(char * result, char *string, int p,
-		 int w, int slen, int flen, int mlen)
+char *get_result(char *r, char *s, int p, int w, int slen, int flen, int mlen)
 {
 	int j, k, i;
 
@@ -73,31 +74,31 @@ char *get_result(char * result, char *string, int p,
 	if (p > 0 && w > 0)
 	{
 		for (j = 0; j < (slen - p); j++)
-			result[j] = ' ';
+			r[j] = ' ';
 		for (k = 0; k < p; k++, j++)
-			result[j] = string[k];
-		result[j] = '\0';
+			r[j] = s[k];
+		r[j] = '\0';
 	}
 	/* Regular simple string case %s*/
 	else if (p == 0 && w == 0 && flen == 2)
 	{
-		for (j = 0; string[j] != '\0'; j++)
-			result[j] = string[j];
-		result[j] = '\0';
+		for (j = 0; s[j] != '\0'; j++)
+			r[j] = s[j];
+		r[j] = '\0';
 	}
 	/* case for when there is . or .0 */
 	else if (p == -1)
 	{
-		result[j] = '\0';
+		r[j] = '\0';
 	}
 	else
 	{
 		for (j = 0; j < (w - slen); j++)
-			result[j] = ' ';
-		for (k = k + j, i = 0; k < mlen && string[i] != '\0'; k++, i++)
-			result[k] = string[i];
-		result[k] = '\0';
-        }
-	return (result);
+			r[j] = ' ';
+		for (k = k + j, i = 0; k < mlen && s[i] != '\0'; k++, i++)
+			r[k] = s[i];
+		r[k] = '\0';
+	}
+	return (r);
 
 }

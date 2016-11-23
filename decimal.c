@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdlib.h>
 #include <stdarg.h>
-#include <stdio.h>
+#include <unistd.h>
 
 /**
  * conversion_di - checks validity of d and i
@@ -9,21 +9,19 @@
  * Return: 1 if checks and 0 and exits otherwise
  */
 
-/**
+
 int conversion_di(char *s)
 {
 	int i, dot_flag;
 
 	i = (*s == '%') ? 1 : 0;
-	printf("%c\n", *s);
 	dot_flag = 0;
-	printf("%c\n", *(s + i));
 	if (*(s + i) == 'd' || *(s + i) == 'i')
 		return (1);
 	while (*(s + i) != 'd' || *(s + i) != 'i')
 	{
-		if (_isdflag(*(s + i)))
-			++i;
+		/*if (_isdflag(*(s + i))) */
+		/* ++i; */
 		if ((_is_digit(*(s + i)) == 0 && *(s + i) != '.') ||
 		    (*(s + i) == '.' && dot_flag))
 		{
@@ -37,23 +35,21 @@ int conversion_di(char *s)
 	}
 	return (1);
 }
-*/
 /**
  * make_decimal - creates formatted output
  * @s: format string
  * @vl: arguement to format
  * Return: formatted string;
  */
-/**
+
 char *make_decimal(char *s, va_list vl)
 {
 	int i, j, k, l, l2, num;
 	char *result, *string;
 
+	k = 0;
 	num = va_arg(vl, int);
-	printf("IM HERE\n");
 	string = num_string(num);
-	printf("%s\n", string);
 	for (i = 0, l = 0; s[i] != 's'; i++)
 	{
 		if (s[i] == '.')
@@ -63,7 +59,7 @@ char *make_decimal(char *s, va_list vl)
 			break;
 		}
 	}
-	num = va_arg(vl,  num);
+	num = va_arg(vl, int);
 	for (i = 0; (s[i] != '.' || s[i] != 's') && _is_digit(s[i]); i++)
 		l2 = 10 * l2 + s[i] - '0';
 	l = (l == 0) ? _strlen(string) + l2 : l;
@@ -76,15 +72,13 @@ char *make_decimal(char *s, va_list vl)
 		}
 	return (result);
 	}
-*/
 
 /**
  * num_string - prints digits
- * @list: digit arguements
+ * @n: digit arguements
  * Return: string of the number
  */
-/**
-char * num_string(int n)
+char *num_string(int n)
 {
 	int i;
 	int  sign, exp;
@@ -94,7 +88,6 @@ char * num_string(int n)
 	sign = 1;
 	ptr = malloc(sizeof(char) * 24);
 	i = 0;
-	if n is positive, change to negative
 	if (n > 0)
 	{
 		n *= -1;
@@ -108,7 +101,6 @@ char * num_string(int n)
 		}
 		if (sign == 1)
 			ptr[i++] = '-';
-prints out every char starting from the left
 		while (exp >= 1)
 		{
 			ptr[i] = (-(n / exp) + '0');
@@ -122,4 +114,3 @@ prints out every char starting from the left
 	ptr[i] = '\0';
 	return (ptr);
 }
-*/

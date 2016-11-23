@@ -5,6 +5,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/**
+ * grab_format - grabs format of given string
+ * @format: format string
+ * Return: format string
+ */
+
 char *grab_format(const char *format)
 {
 	int j;
@@ -19,10 +25,8 @@ char *grab_format(const char *format)
 		exit(98);
 	}
 	conv = malloc((j + 2) * sizeof(char));
-/**	printf("GRAB DEBUG see format %s\n", format); */
 	conv = _strncpy(conv, format, j + 1);
 	conv[j + 1] = '\0';
-/**	printf("GRAB DEBUG see conv %s\n", conv); */
 	return (conv);
 }
 
@@ -31,7 +35,6 @@ char *grab_format(const char *format)
  * fill_format - fills in the format_array with all conversion formatters
  * including their flags
  * @format: formatting string containing possible formatters
- * @format_array: array to put the formatting strings in
  * Return: format_array
  */
 
@@ -55,7 +58,6 @@ void fill_format(const char *format)
 		if (flag == 1)
 		{
 			flag = 0;
-/**			printf("FILL - format %s\n", format + i); */
 			conv = grab_format(format + i);
 			l_conv = _strlen(conv);
 			get_validity_func(conv[l_conv - 1])(conv);
