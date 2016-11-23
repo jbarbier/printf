@@ -26,16 +26,16 @@ char *_itoa(int n)
 	int l, tens, i, min;
 	char *number;
 
-	l = 1;
-	min = 0;
-	if (n < 0)
+	l = 2;
+	min = 1;
+	if (n >= 0)
 	{
-		++l;
-		min = 1;
+		l = l - 1;
+		min = 0;
 		n = -n;
 	}
 	tens = n;
-	while (tens > 9)
+	while (tens < -9)
 	{
 		tens /= 10;
 		l = l + 1;
@@ -44,10 +44,10 @@ char *_itoa(int n)
 	i = l - 1;
 	number[l] = '\0';
 	do {
-		number[i] = n % 10 + '0';
+		number[i] = -(n % 10) + '0';
 		n /= 10;
 		--i;
-	} while (i >= 0 && n > 0);
+	} while (i >= 0 && n < 0);
 
 	if (i == 0 && min)
 		number[0] = '-';
@@ -69,8 +69,6 @@ char *make_decimal(char *s, va_list vl)
 	(void) s;
 
 	n = va_arg(vl, int);
-
 	number = _itoa(n);
-
 	return (number);
 }
