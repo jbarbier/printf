@@ -21,8 +21,7 @@ char *grab_format(const char *format)
 		++j;
 	if (no_conversion(format[j]))
 	{
-		write(1, "invalid\n", 8);
-		exit(98);
+		return (NULL);
 	}
 	conv = malloc((j + 2) * sizeof(char));
 	conv = _strncpy(conv, format, j + 1);
