@@ -25,17 +25,17 @@ char *octorbi(unsigned int n, int b)
 {
 
 	int i;
-        char *s;
+	char *s;
 
-        i = 0; /** index for octal string*/
-        s = malloc(sizeof(int) * 200);
-        while (n != 0)
-        {
-                s[i++] = (n % b) + '0';
-                n = n / b;
-        }
-        reverse_array(s, i);
-        s[i] = '\0';
+	i = 0; /** index for octal string*/
+	s = malloc(sizeof(int) * 200);
+	while (n != 0)
+	{
+		s[i++] = (n % b) + '0';
+		n = n / b;
+	}
+	reverse_array(s, i);
+	s[i] = '\0';
 
 	return (s);
 }
