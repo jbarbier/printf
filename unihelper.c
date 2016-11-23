@@ -9,10 +9,10 @@
 
 int no_conversion(char c)
 {
-	char array[9] = "csdiuoxXp";
+	char array[] = "csdiuoxXpb";
 	int i;
 
-	for (i = 0; i < 9; i++)
+	for (i = 0; i < 10; i++)
 	{
 		if (c == array[i])
 			return (0);
