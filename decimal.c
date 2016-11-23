@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <limits.h>
 
 /**
  * conversion_di - checks validity of d and i
@@ -23,6 +24,7 @@ char *_itoa(int n)
 {
 	int l, tens, i, min;
 	char *number;
+
 	l = 1;
 	min = 0;
 	if (n < 0)
@@ -31,17 +33,16 @@ char *_itoa(int n)
 		min = 1;
 		n = -n;
 	}
-	tens = 10;
-	while ((n / tens) > 0)
+	tens = n;
+	while (tens > 9)
 	{
-		tens *= tens;
-		++l;
+		tens /= 10;
+		l = l + 1;
 	}
 	number = malloc((l + 1) * sizeof(char));
 	i = l - 1;
 	number[l] = '\0';
-	do
-	{
+	do {
 		number[i] = n % 10 + '0';
 		n /= 10;
 		--i;
@@ -49,6 +50,7 @@ char *_itoa(int n)
 
 	if (i == 0 && min)
 		number[0] = '-';
+
 	return (number);
 }
 
@@ -62,8 +64,11 @@ char *_itoa(int n)
 char *make_decimal(char *s, va_list vl)
 {
 	char *number;
+	int n;
 
-	number = _itoa(va_arg(vl, int));
+	n = va_arg(vl, int);
+
+	number = _itoa(n);
 
 	return (number);
 }
