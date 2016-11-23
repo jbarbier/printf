@@ -4,7 +4,7 @@
 
 
 /**
- * hex - convert a number to an octal
+ * heX - convert a number to an octal
  * @n: a number
  * Return: a number in octal
  */
@@ -27,7 +27,7 @@ char *heX(unsigned int n)
 }
 
 /**
- * make_hex - make an octal string
+ * make_heX - make an octal string
  * @s: a format string
  * @l: a va_list
  * Return: a pointer to the result
@@ -39,5 +39,5 @@ char *make_heX(char *s, va_list l)
 	(void) s;
 	n = va_arg(l, unsigned int);
 	result = heX(n);
-	return(result);
+	return (result);
 }
