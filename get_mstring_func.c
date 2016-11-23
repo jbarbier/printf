@@ -13,12 +13,13 @@ char *(*get_mstring_func(char c))(char *, va_list)
 	m_string v[] = {
 		{'c', make_char},
 		{'s', make_string},
-		{'d', make_decimal}
+		{'d', make_decimal},
+		{'i', make_decimal}
 	};
 	int i;
 
 	i = 0;
-	while (i < 3)
+	while (i < 4)
 	{
 		if (c == v[i].type)
 			return (v[i].make_s);
