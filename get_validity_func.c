@@ -10,20 +10,24 @@
 
 int (*get_validity_func(char c))(char *)
 {
+	printf("VALID\n");
 	valid v[] = {
 		{'c', conversion_char},
 		{'s', conversion_string},
 		{'d', conversion_di},
-		{'i', conversion_di}
+		{'i', conversion_di},
+		{'u', conversion_u},
+		{'o', conversion_o}
 	};
 	int i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 6)
 	{
 		if (c == v[i].type)
 			return (v[i].conversion_check);
 		i++;
 	}
+	printf("VALID END\n");
 	return (NULL);
 }
