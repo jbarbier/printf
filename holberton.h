@@ -32,6 +32,7 @@ int conversion_di(char *s);
 int _is_digit(char c);
 char *_strncpy(char *dest, const char *src, int n);
 int _strlen(const char *);
+int _isdflag(char c);
 
 /* in unihelper2.c */
 int give_precision(char *, char);
