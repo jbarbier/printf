@@ -10,7 +10,6 @@
 
 int (*get_validity_func(char c))(char *)
 {
-	printf("VALID\n");
 	valid v[] = {
 		{'c', conversion_char},
 		{'s', conversion_string},
@@ -29,6 +28,5 @@ int (*get_validity_func(char c))(char *)
 			return (v[i].conversion_check);
 		i++;
 	}
-	printf("VALID END\n");
 	return (NULL);
 }

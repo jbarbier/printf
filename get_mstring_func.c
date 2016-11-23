@@ -10,7 +10,6 @@
 
 char *(*get_mstring_func(char c))(char *, va_list)
 {
-//	printf("MSTRING\n");
 	m_string v[] = {
 		{'c', make_char},
 		{'s', make_string},
@@ -21,11 +20,9 @@ char *(*get_mstring_func(char c))(char *, va_list)
 		{'b', make_binary}
 	};
 	int i;
-//	printf("MShere\n");
-//	char *(*p)(char *, va_list) = make_unsigned;
-//	printf("%p", p);
 
 	i = 0;
+
 	while (i < 7)
 	{
 		if (c == v[i].type)

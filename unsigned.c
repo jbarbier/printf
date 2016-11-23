@@ -22,7 +22,7 @@ int conversion_u(char *s)
  */
 char *_utoa(unsigned int n)
 {
-	int l, i, min;
+	int l, i;
 	char *number;
 	unsigned int tens;
 
@@ -33,6 +33,7 @@ char *_utoa(unsigned int n)
 		tens /= 10;
 		l = l + 1;
 	}
+
 	number = malloc((l + 1) * sizeof(char));
 	i = l - 1;
 	number[l] = '\0';
@@ -59,6 +60,6 @@ char *make_unsigned(char *s, va_list l)
 	(void) s;
 	n = va_arg(l, unsigned int);
 	result = _utoa(n);
-
 	return (result);
+
 }
