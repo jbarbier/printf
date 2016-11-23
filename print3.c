@@ -33,7 +33,6 @@ int _printf(const char *format, ...)
 	va_list alist;
 
 	error_format(format);
-/**	fill_format(format); */
 	buffer = malloc(BUF_LENGTH * sizeof(char));
 	_flush(buffer);
 	va_start(alist, format), flag = b_i = 0;
@@ -51,7 +50,7 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == '%' || conv == NULL)
 			{
 				flag = (flag == 0) ? 1 : 0;
-				fill_buffer(buffer, format + i, b_i, 1);
+				fill_buffer(buffer, format, b_i, 1);
 				i += 2, b_i += 1;
 			}
 		}
@@ -62,8 +61,6 @@ int _printf(const char *format, ...)
 			l_conv = _strlen(conv);
 			if (get_validity_func(conv[l_conv - 1])(conv))
 				format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
-			else
-				break;
 			free(conv);
 			fill_buffer(buffer, format_str, b_i, _strlen(format_str));
 			b_i = b_i + _strlen(format_str);
