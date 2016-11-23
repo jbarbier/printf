@@ -29,11 +29,10 @@ char *octorbi(unsigned int n, int b)
 
 	i = 0; /** index for octal string*/
 	s = malloc(sizeof(int) * 200);
-	while (n != 0)
-	{
+	do {
 		s[i++] = (n % b) + '0';
 		n = n / b;
-	}
+	} while (n > 0);
 	reverse_array(s, i);
 	s[i] = '\0';
 
