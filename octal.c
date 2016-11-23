@@ -16,21 +16,22 @@ int conversion_o(char *s)
 
 
 /**
- * octal - convert a number to an octal
+ * octorbi - convert a number to an octal
  * @n: a number
+ * @b: the base, 8 or 2
  * Return: a number in octal
  */
-long octal(unsigned int n)
+long long octorbi(unsigned int n, int b)
 {
 	long int i;
-	long result;
+	long long result;
 
 	i = 1;
 	result = 0;
 	while (n != 0)
 	{
-		result += (n % 8) * i;
-		n /= 8;
+		result += (n % b) * i;
+		n /= b;
 		i *= 10;
 	}
 	return (result);
@@ -42,7 +43,7 @@ long octal(unsigned int n)
  * @n: an unsigned int
  * Return: a string
  */
-char *_ltoa(long n)
+char *_ltoa(long long n)
 {
 	int l, i, min;
 	char *number;
@@ -81,6 +82,6 @@ char *make_octal(char *s, va_list l)
 	(void) s;
 
 	n = va_arg(l, unsigned int);
-	result = _ltoa(octal(n));
+	result = _ltoa(octorbi(n, 8));
 	return (result);
 }

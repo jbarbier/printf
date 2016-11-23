@@ -17,7 +17,8 @@ char *(*get_mstring_func(char c))(char *, va_list)
 		{'d', make_decimal},
 		{'i', make_decimal},
 		{'u', make_unsigned},
-		{'o', make_octal}
+		{'o', make_octal},
+		{'b', make_binary}
 	};
 	int i;
 //	printf("MShere\n");
@@ -25,7 +26,7 @@ char *(*get_mstring_func(char c))(char *, va_list)
 //	printf("%p", p);
 
 	i = 0;
-	while (i < 6)
+	while (i < 7)
 	{
 		if (c == v[i].type)
 			return (v[i].make_s);
