@@ -54,7 +54,11 @@ char *make_decimal(char *s, va_list vl);
 /*unsigned.c */
 int conversion_u(char *s);
 char *make_unsigned(char *s, va_list vl);
+char *_utoa(unsigned int);
 
+/*octal.c */
+int conversion_o(char *s);
+char *make_octal(char *s, va_list vl);
 
 /*structs*/
 /**
