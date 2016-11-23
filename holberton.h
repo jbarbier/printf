@@ -60,6 +60,16 @@ char *_utoa(unsigned int);
 int conversion_o(char *s);
 char *make_octal(char *s, va_list vl);
 
+/* hex. */
+int conversion_h(char *s);
+char *make_hex(char *s, va_list vl);
+char *hex(unsigned int);
+void reverse_array(char *a, int n);
+
+/* heX */
+char *make_heX(char *s, va_list vl);
+char *heX(unsigned int);
+
 /*structs*/
 /**
  * struct valid - check if formatting is valid
