@@ -51,6 +51,11 @@ char *make_string(char *s, va_list vl);
 char *num_string(int n);
 char *make_decimal(char *s, va_list vl);
 
+/*unsigned.c */
+int conversion_u(char *s);
+char *make_unsigned(char *s, va_list vl);
+
+
 /*structs*/
 /**
  * struct valid - check if formatting is valid
