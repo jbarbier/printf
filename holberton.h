@@ -77,6 +77,10 @@ void reverse_array(char *a, int n);
 char *make_heX(char *s, va_list vl);
 char *heX(unsigned int);
 
+/* reverse */
+int conversion_r(char *s);
+char *make_reverse(char *s, va_list vl);
+char *reverse(char *s);
 /*structs*/
 /**
  * struct valid - check if formatting is valid

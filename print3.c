@@ -59,6 +59,7 @@ int _printf(const char *format, ...)
 			conv = grab_format(format + i);
 			l_conv = _strlen(conv);
 			format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
+			printf("%s\n", format_str);
 			free(conv);
 			fill_buffer(buffer, format_str, b_i, _strlen(format_str));
 			b_i = b_i + _strlen(format_str);
