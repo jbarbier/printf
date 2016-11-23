@@ -33,6 +33,7 @@ int conversion_di(char *s);
 int _is_digit(char c);
 char *_strncpy(char *dest, const char *src, int n);
 int _strlen(const char *);
+int _isdflag(char c);
 
 /*in get_mstring_func.c */
 char *(*get_mstring_func(char))(char *, va_list vl);
