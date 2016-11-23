@@ -19,53 +19,27 @@ int conversion_o(char *s)
  * octorbi - convert a number to an octal
  * @n: a number
  * @b: the base, 8 or 2
- * Return: a number in octal
+ * Return: a number in octal or binary in 2 pieces
  */
-long octorbi(unsigned int n, int b)
+char *octorbi(unsigned int n, int b)
 {
-	long int i;
-	long result;
 
-	i = 1;
-	result = 0;
-	while (n != 0)
-	{
-		result += (n % b) * i;
-		n /= b;
-		i *= 10;
-	}
-	return (result);
+	int i;
+        char *s;
+
+        i = 0; /** index for octal string*/
+        s = malloc(sizeof(int) * 200);
+        while (n != 0)
+        {
+                s[i++] = (n % b) + '0';
+                n = n / b;
+        }
+        reverse_array(s, i);
+        s[i] = '\0';
+
+	return (s);
 }
 
-
-/**
- * _ltoa - transforms a number into a string
- * @n: an unsigned int
- * Return: a string
- */
-char *_ltoa(long n)
-{
-	int l, i;
-	char *number;
-	long int tens;
-
-	l = 1;
-	tens = n;
-	while (tens > 9)
-	{
-		tens /= 10;
-		l = l + 1;
-	}
-	number = malloc((l + 1) * sizeof(char));
-	i = l - 1;
-	number[l] = '\0';
-	do {
-		number[i] = (n % 10) + '0';
-		n /= 10;
-		--i;
-	} while (i >= 0 && n > 0);
-	return (number);
-}
 
 
 
@@ -82,6 +56,6 @@ char *make_octal(char *s, va_list l)
 	(void) s;
 
 	n = va_arg(l, unsigned int);
-	result = _ltoa(octorbi(n, 8));
+	result = octorbi(n, 8);
 	return (result);
 }
