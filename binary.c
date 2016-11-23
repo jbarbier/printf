@@ -28,6 +28,6 @@ char *make_binary(char *s, va_list l)
 	(void) s;
 
 	n = va_arg(l, unsigned int);
-	result = _ltoa(octorbi(n, 2));
+	result = octorbi(n, 2);
 	return (result);
 }

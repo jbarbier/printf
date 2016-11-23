@@ -59,8 +59,7 @@ char *_utoa(unsigned int);
 /*octal.c */
 int conversion_o(char *s);
 char *make_octal(char *s, va_list vl);
-long octorbi(unsigned int, int);
-char *_ltoa(long);
+char *octorbi(unsigned int, int);
 
 /*binary.c*/
 int conversion_b(char *s);
