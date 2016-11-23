@@ -57,13 +57,12 @@ int conversion_string(char *s)
 		if ((_is_digit(*(s + i)) == 0 && *(s + i) != '.') ||
 		    (*(s + i) == '.' && dot_flag))
 		{
-			write(1, "no string\n", 10);
-			exit(98);
 			return (0);
 		}
 		if (_is_digit(*(s + i)) == 0 && *(s + i) == '.')
 			dot_flag = 1;
 			++i;
+		i++;
 	}
 	return (1);
 }

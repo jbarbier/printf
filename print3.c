@@ -61,6 +61,8 @@ int _printf(const char *format, ...)
 			l_conv = _strlen(conv);
 			if (get_validity_func(conv[l_conv - 1])(conv))
 				format_str = get_mstring_func(conv[l_conv - 1])(conv, alist);
+			else
+				break;
 			free(conv);
 			fill_buffer(buffer, format_str, b_i, _strlen(format_str));
 			b_i = b_i + _strlen(format_str);
