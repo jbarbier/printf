@@ -51,7 +51,7 @@ char *make_hex(char *s, va_list l)
 	(void) s;
 	n = va_arg(l, unsigned int);
 	result = hex(n);
-	return(result);
+	return (result);
 }
 
 
