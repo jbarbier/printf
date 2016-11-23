@@ -86,7 +86,7 @@ int _isdflag(char* c)
 	char first;
 	while (*flags)
 	{
-		if (*flags == c)
+		if (*flags == *c)
 			return (1);
 		++flags;
 	}
