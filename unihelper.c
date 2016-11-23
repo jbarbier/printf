@@ -83,7 +83,6 @@ int _strlen(const char *s)
 int _isdflag(char* c)
 {
 	char *flags = "-+ 0";
-	char first;
 	while (*flags)
 	{
 		if (*flags == *c)
