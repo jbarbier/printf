@@ -37,6 +37,7 @@ We created helper files to put universal helper functions such at idigit, no_con
 <br />
 Example:
 <br />
+```
 int main(void)<br />
 {<br />
   _printf("This is a char: [%c]\n", 'c')<br />
@@ -47,7 +48,7 @@ int main(void)<br />
   _printf("Binary is [%b]\n", 98);<br />
   return (0)<br />
 }<br />
-
+```
 This is a char: [c]<br />
 This is a string.<br />
 Unsigned octal:[20000001777]<br />
