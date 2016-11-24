@@ -10,7 +10,7 @@ Formatter files<br />
 <br />
 We created a file for each formatter. In each file, it should contain a make_formatter function that creates a string to fill in the buffer. Also included in each formatter file is a conversion check to see if we need to account for precision, width, or flag. If necessary, we also included a helper function to convert a number to a string. 
 <br />
-  Foramtter files:
+  Foramtter files:<br />
     binary.c <br />
     chars.c <br />
     decimal.c <br />
