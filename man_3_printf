@@ -57,8 +57,9 @@ argument (and it is an error if insufficiently many arguments are given).
 .SS The conversion specifier
 
 .SH SEE ALSO
-.I peerlearning(2), projectbased(2), fullstack(2), Betty(1)
+.I write(2), printf(3)
 
 .SH BUGS
-No known bugs.
+Hm, well bugs.
 .SH AUTHOR
+Anne Cognet - Jennie Chu
